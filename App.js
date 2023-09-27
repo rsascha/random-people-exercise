@@ -1,20 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, View } from "react-native";
+import { useState } from "react";
+import { ChangeDisplayButton } from "./components/ChangeDisplayButton";
+import { ScrollViewUsers } from "./components/ScrollViewUsers";
+import { FlatListUsers } from "./components/FlatListUsers";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 export default function App() {
+  const [display, setDisplay] = useState("ScrollViewUsers");
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <SafeAreaView>
+        <View style={styles.container}>
+          {display === "ScrollViewUsers" ? (
+            <ScrollViewUsers />
+          ) : (
+            <FlatListUsers />
+          )}
+          <View style={{ flexDirection: "row" }}>
+            <ChangeDisplayButton
+              title="Scroll View"
+              onPress={() => setDisplay("ScrollViewUsers")}
+            />
+            <ChangeDisplayButton
+              title="List View"
+              onPress={() => setDisplay("FlatListUsers")}
+            />
+          </View>
+          <StatusBar style="auto" />
+        </View>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#020202",
+
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  writtenContent: {
+    color: "white",
   },
 });
