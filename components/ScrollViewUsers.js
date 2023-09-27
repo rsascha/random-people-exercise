@@ -22,7 +22,7 @@ export function ScrollViewUsers() {
   }, []);
 
   return (
-    <ScrollView style={{ backgroundColor: "hotpink" }}>
+    <ScrollView style={{ backgroundColor: "hotpink", width: "100%" }}>
       {displayPeople.map((person) => {
         return (
           <View key={person.name.last}>
