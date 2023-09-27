@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useState } from "react";
 import { ChangeDisplayButton } from "./components/ChangeDisplayButton";
 import { ScrollViewUsers } from "./components/ScrollViewUsers";
